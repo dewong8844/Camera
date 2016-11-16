@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,23 +19,68 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbp-8f-O2d">
-                                <rect key="frame" x="16" y="28" width="343" height="631"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="BCL-Jj-m7p">
+                                <rect key="frame" x="15" y="34" width="289" height="426"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbp-8f-O2d">
+                                        <rect key="frame" x="0.0" y="0.0" width="289" height="384"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="BTf-J2-Qma" appends="YES" id="cxx-1H-AZx"/>
+                                        </connections>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="86Y-fw-Aee">
+                                        <rect key="frame" x="121" y="396" width="168" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ty7-mY-AOr">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="30"/>
+                                                <state key="normal" title="Snap"/>
+                                                <connections>
+                                                    <action selector="clickButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lFg-Um-jet"/>
+                                                </connections>
+                                            </button>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oNT-XD-iyc">
+                                                <rect key="frame" x="75" y="2" width="93" height="29"/>
+                                                <segments>
+                                                    <segment title="Front"/>
+                                                    <segment title="Back"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="frontBackSelect:" destination="BYZ-38-t0r" eventType="valueChanged" id="rf1-eD-k2r"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kbp-8f-O2d" firstAttribute="leading" secondItem="BCL-Jj-m7p" secondAttribute="leading" id="IRt-zP-d7O"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BCL-Jj-m7p" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="7AW-ox-mR0"/>
+                            <constraint firstItem="BCL-Jj-m7p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="Lfc-lV-chS"/>
+                            <constraint firstAttribute="bottom" secondItem="BCL-Jj-m7p" secondAttribute="bottom" constant="20" symbolic="YES" id="TGg-pG-Omw"/>
+                            <constraint firstItem="BCL-Jj-m7p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jOL-Xf-PXx"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="kbp-8f-O2d" id="0Rc-4K-exw"/>
+                        <outlet property="segmentedControl" destination="oNT-XD-iyc" id="1KQ-Mj-WWt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="BTf-J2-Qma">
+                    <connections>
+                        <action selector="focusAndExposeTap:" destination="BYZ-38-t0r" id="dwf-Nc-MOX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="135" y="138.75"/>
         </scene>
     </scenes>
 </document>
