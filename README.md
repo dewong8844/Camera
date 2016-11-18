@@ -10,5 +10,6 @@ References:
 3. http://jamesonquave.com/blog/taking-control-of-the-iphone-camera-in-ios-8-with-swift-part-1/
 4. http://stackoverflow.com/questions/28756363/how-to-capture-picture-with-avcapturesession-in-swift
 
-Known issues:
-Touch focus and camera select not working
+Barcode and QR code reference:
+1. https://www.appcoda.com/barcode-reader-swift
+2. https://www.appcoda.com/simple-barcode-reader-app-swift
